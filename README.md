@@ -1,0 +1,2 @@
+# syntiaro-pos
+POS sales
