@@ -36,7 +36,7 @@
                 server_errors   : '',
                 error_class     : '',
                 processing      : false,
-                email           : (this.is_demo == true && this.preview_mode == true)?'admin@appsthing.com':'',
+                email           : (this.is_demo == true && this.preview_mode == true)?'admin@syntiaro.com':'',
                 password        : (this.is_demo == true && this.preview_mode == true)?'administrator':'',
                 message         : this.prop_message
             }

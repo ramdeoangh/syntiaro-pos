@@ -22,7 +22,7 @@ class v2_overall_seeder extends Seeder
             ['id', '=', 1],
             ['customer_type', '=', 'DEFAULT'],
         ])
-        ->update(['name' => 'Walkin Customer', 'email' => 'walkincustomer@appsthing.com']);
+            ->update(['name' => 'Walkin Customer', 'email' => 'walkincustomer@syntiaro.com']);
 
         //order payment status
         MasterStatus::firstOrCreate(
@@ -76,7 +76,7 @@ class v2_overall_seeder extends Seeder
         $account_mm = MenuModel::create(
             [
                 'type' => 'MAIN_MENU',
-                'menu_key' => 'MM_ACCOUNT', 
+                'menu_key' => 'MM_ACCOUNT',
                 'label' => "Business Account",
                 'route' => "account",
                 'parent' => 0,
@@ -88,54 +88,54 @@ class v2_overall_seeder extends Seeder
             ['type', '=', 'MAIN_MENU'],
             ['menu_key', '=', 'MM_USER'],
         ])
-        ->update(['sort_order' => 4]);
+            ->update(['sort_order' => 4]);
 
 
         MenuModel::where([
             ['type', '=', 'MAIN_MENU'],
             ['menu_key', '=', 'MM_SUPPLIER'],
         ])
-        ->update(['sort_order' => 5]);
+            ->update(['sort_order' => 5]);
 
 
         MenuModel::where([
             ['type', '=', 'MAIN_MENU'],
             ['menu_key', '=', 'MM_TAX_AND_DISCOUNT'],
         ])
-        ->update(['sort_order' => 6]);
+            ->update(['sort_order' => 6]);
 
 
         MenuModel::where([
             ['type', '=', 'MAIN_MENU'],
             ['menu_key', '=', 'MM_PRODUCT'],
         ])
-        ->update(['sort_order' => 7]);
+            ->update(['sort_order' => 7]);
 
 
         MenuModel::where([
             ['type', '=', 'MAIN_MENU'],
             ['menu_key', '=', 'MM_REPORT'],
         ])
-        ->update(['sort_order' => 8]);
+            ->update(['sort_order' => 8]);
 
         MenuModel::where([
             ['type', '=', 'MAIN_MENU'],
             ['menu_key', '=', 'MM_SETTINGS'],
         ])
-        ->update(['sort_order' => 9]);
+            ->update(['sort_order' => 9]);
 
         MenuModel::where([
             ['type', '=', 'SUB_MENU'],
             ['menu_key', '=', 'SM_ORDERS'],
         ])
-        ->update(['menu_key' => 'SM_POS_ORDERS']);
+            ->update(['menu_key' => 'SM_POS_ORDERS']);
 
         /* Sub menu */
 
         $account_sm = MenuModel::create(
             [
                 'type' => 'SUB_MENU',
-                'menu_key' => 'SM_ACCOUNTS', 
+                'menu_key' => 'SM_ACCOUNTS',
                 'label' => "Accounts",
                 'route' => "accounts",
                 'parent' => $account_mm,
@@ -146,20 +146,20 @@ class v2_overall_seeder extends Seeder
         $transaction_sm = MenuModel::create(
             [
                 'type' => 'SUB_MENU',
-                'menu_key' => 'SM_TRANSACTIONS', 
+                'menu_key' => 'SM_TRANSACTIONS',
                 'label' => "Transactions",
                 'route' => "transactions",
                 'parent' => $account_mm,
                 'sort_order' => 2
             ]
         )->id;
-        
+
         // Account
 
         MenuModel::create(
             [
                 'type' => 'ACTIONS',
-                'menu_key' => 'A_ADD_ACCOUNT', 
+                'menu_key' => 'A_ADD_ACCOUNT',
                 'label' => "Add Account",
                 'route' => "",
                 'parent' => $account_sm,
@@ -170,7 +170,7 @@ class v2_overall_seeder extends Seeder
         MenuModel::create(
             [
                 'type' => 'ACTIONS',
-                'menu_key' => 'A_EDIT_ACCOUNT', 
+                'menu_key' => 'A_EDIT_ACCOUNT',
                 'label' => "Edit Account",
                 'route' => "",
                 'parent' => $account_sm,
@@ -181,7 +181,7 @@ class v2_overall_seeder extends Seeder
         MenuModel::create(
             [
                 'type' => 'ACTIONS',
-                'menu_key' => 'A_DETAIL_ACCOUNT', 
+                'menu_key' => 'A_DETAIL_ACCOUNT',
                 'label' => "View Account Detail",
                 'route' => "",
                 'parent' => $account_sm,
@@ -192,7 +192,7 @@ class v2_overall_seeder extends Seeder
         MenuModel::create(
             [
                 'type' => 'ACTIONS',
-                'menu_key' => 'A_ADD_TRANSACTION', 
+                'menu_key' => 'A_ADD_TRANSACTION',
                 'label' => "Add Transaction",
                 'route' => "",
                 'parent' => $transaction_sm,
@@ -203,7 +203,7 @@ class v2_overall_seeder extends Seeder
         MenuModel::create(
             [
                 'type' => 'ACTIONS',
-                'menu_key' => 'A_EDIT_TRANSACTION', 
+                'menu_key' => 'A_EDIT_TRANSACTION',
                 'label' => "Edit Transaction",
                 'route' => "",
                 'parent' => $transaction_sm,
@@ -214,7 +214,7 @@ class v2_overall_seeder extends Seeder
         MenuModel::create(
             [
                 'type' => 'ACTIONS',
-                'menu_key' => 'A_DETAIL_TRANSACTION', 
+                'menu_key' => 'A_DETAIL_TRANSACTION',
                 'label' => "View Transaction Detail",
                 'route' => "",
                 'parent' => $transaction_sm,
@@ -225,7 +225,7 @@ class v2_overall_seeder extends Seeder
         MenuModel::create(
             [
                 'type' => 'ACTIONS',
-                'menu_key' => 'A_DELETE_TRANSACTION', 
+                'menu_key' => 'A_DELETE_TRANSACTION',
                 'label' => "Delete Transaction",
                 'route' => "",
                 'parent' => $transaction_sm,
@@ -237,13 +237,13 @@ class v2_overall_seeder extends Seeder
             ['type', '=', 'SUB_MENU'],
             ['menu_key', '=', 'SM_PURCHASE_ORDERS'],
         ])
-        ->active()
-        ->first();
+            ->active()
+            ->first();
 
         MenuModel::create(
             [
                 'type' => 'ACTIONS',
-                'menu_key' => 'A_DELETE_PURCHASE_ORDER', 
+                'menu_key' => 'A_DELETE_PURCHASE_ORDER',
                 'label' => "Delete Purchase Order",
                 'route' => "",
                 'parent' => $po_sm_data->id,
@@ -255,6 +255,6 @@ class v2_overall_seeder extends Seeder
             ['type', '=', 'ACTIONS'],
             ['menu_key', '=', 'A_EDIT_STATUS_PURCHASE_ORDER'],
         ])
-        ->update(['sort_order' => 4]);
+            ->update(['sort_order' => 4]);
     }
 }
