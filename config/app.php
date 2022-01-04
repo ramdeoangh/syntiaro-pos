@@ -243,5 +243,5 @@ return [
 
     'sql_date_time_format' => 'Y-m-d H:i:s',
 
-    'deactivate_link' => 'https://www.appsthing.com/api/deactivate_product',
+    'deactivate_link' => 'https://www.syntiaro.com/api/deactivate_product',
 ];

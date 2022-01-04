@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $server_check_link = '/server_check.php';
 
@@ -12,7 +12,7 @@ return [
             'upload_path' => 'storage/profile/'
         ],
         'company' => [
-            'app_title' => 'Appsthing POS',
+            'app_title' => 'Syntiaro POS',
             'company_logo_default' => '/images/logo_word_mark.png',
             'invoice_logo_default' => '/images/logo_invoice_print.png',
             'navbar_logo_default' => '/images/logo_small.png',
@@ -77,7 +77,7 @@ return [
             'upload_path' => 'storage/register/'
         ],
     ],
-    
+
     'unique_code_start' => [
         'user'          => 100,
         'role'          => 100,
@@ -88,14 +88,14 @@ return [
         'quotation'     => 100,
         'account'       => 100,
         'transaction'   => 100,
-        'stock_transfer'=> 100,
+        'stock_transfer' => 100,
         'stock_return'  => 100,
         'booking'       => 100,
         'addon_group'   => 100,
-        'variant_option'=> 100
+        'variant_option' => 100
     ],
 
     'demo_notification' => 'Demo Mode',
 
-    'activation_notification' => "<i class='fas fa-exclamation-circle'></i> Activate Product, <a href='".$server_check_link."' class='text-dark text-bold text-decoration-none'>Click Here</a>"
+    'activation_notification' => "<i class='fas fa-exclamation-circle'></i> Activate Product, <a href='" . $server_check_link . "' class='text-dark text-bold text-decoration-none'>Click Here</a>"
 ];

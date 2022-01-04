@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @author Appsthing
+ * @author Syntiaro
  * @version 2
  */
 

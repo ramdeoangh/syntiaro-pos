@@ -60,13 +60,13 @@ class v3_overall_seeder extends Seeder
                 'color' => 'label green-label'
             ]
         )->save();
-        
+
         // Restaurant module
 
         $restaurant_mm = MenuModel::create(
             [
                 'type' => 'MAIN_MENU',
-                'menu_key' => 'MM_RESTAURANT', 
+                'menu_key' => 'MM_RESTAURANT',
                 'label' => "Restaurant",
                 'route' => "",
                 'parent' => 0,
@@ -77,7 +77,7 @@ class v3_overall_seeder extends Seeder
         $kitchen_sm = MenuModel::create(
             [
                 'type' => 'SUB_MENU',
-                'menu_key' => 'SM_RESTAURANT_KITCHEN', 
+                'menu_key' => 'SM_RESTAURANT_KITCHEN',
                 'label' => "Kitchen View",
                 'route' => "kitchen",
                 'parent' => $restaurant_mm,
@@ -88,7 +88,7 @@ class v3_overall_seeder extends Seeder
         $table_sm = MenuModel::create(
             [
                 'type' => 'SUB_MENU',
-                'menu_key' => 'SM_RESTAURANT_TABLES', 
+                'menu_key' => 'SM_RESTAURANT_TABLES',
                 'label' => "Tables",
                 'route' => "tables",
                 'parent' => $restaurant_mm,
@@ -99,7 +99,7 @@ class v3_overall_seeder extends Seeder
         MenuModel::create(
             [
                 'type' => 'ACTIONS',
-                'menu_key' => 'A_ADD_RESTAURANT_TABLE', 
+                'menu_key' => 'A_ADD_RESTAURANT_TABLE',
                 'label' => "Add Table",
                 'route' => "",
                 'parent' => $table_sm,
@@ -110,7 +110,7 @@ class v3_overall_seeder extends Seeder
         MenuModel::create(
             [
                 'type' => 'ACTIONS',
-                'menu_key' => 'A_EDIT_RESTAURANT_TABLE', 
+                'menu_key' => 'A_EDIT_RESTAURANT_TABLE',
                 'label' => "Edit Table",
                 'route' => "",
                 'parent' => $table_sm,
@@ -121,7 +121,7 @@ class v3_overall_seeder extends Seeder
         MenuModel::create(
             [
                 'type' => 'ACTIONS',
-                'menu_key' => 'A_DETAIL_RESTAURANT_TABLE', 
+                'menu_key' => 'A_DETAIL_RESTAURANT_TABLE',
                 'label' => "View Table Detail",
                 'route' => "",
                 'parent' => $table_sm,
@@ -132,7 +132,7 @@ class v3_overall_seeder extends Seeder
         MenuModel::create(
             [
                 'type' => 'ACTIONS',
-                'menu_key' => 'A_CHANGE_KITCHEN_ORDER_STATUS', 
+                'menu_key' => 'A_CHANGE_KITCHEN_ORDER_STATUS',
                 'label' => "Change Kitchen Order Status",
                 'route' => "",
                 'parent' => $kitchen_sm,
@@ -144,25 +144,25 @@ class v3_overall_seeder extends Seeder
             ['type', '=', 'MAIN_MENU'],
             ['menu_key', '=', 'MM_ORDERS'],
         ])
-        ->update(['label' => 'Sales & Orders']);
+            ->update(['label' => 'Sales & Orders']);
 
         MenuModel::where([
             ['type', '=', 'MAIN_MENU'],
             ['menu_key', '=', 'MM_USER'],
         ])
-        ->update(['label' => 'User & Customer']);
+            ->update(['label' => 'User & Customer']);
 
         MenuModel::where([
             ['type', '=', 'MAIN_MENU'],
             ['menu_key', '=', 'MM_SETTINGS'],
         ])
-        ->update(['sort_order' => 10]);
+            ->update(['sort_order' => 10]);
 
         MenuModel::where([
             ['type', '=', 'MAIN_MENU'],
             ['menu_key', '=', 'MM_ACCOUNT'],
         ])
-        ->update(['route' => '']);
+            ->update(['route' => '']);
 
         //icons update
 
@@ -170,66 +170,66 @@ class v3_overall_seeder extends Seeder
             ['type', '=', 'MAIN_MENU'],
             ['menu_key', '=', 'MM_DASHBOARD'],
         ])
-        ->update(['icon' => 'fas fa-chart-line']);
+            ->update(['icon' => 'fas fa-chart-line']);
 
         MenuModel::where([
             ['type', '=', 'MAIN_MENU'],
             ['menu_key', '=', 'MM_ORDERS'],
         ])
-        ->update(['icon' => 'fas fa-shopping-cart']);
+            ->update(['icon' => 'fas fa-shopping-cart']);
 
         MenuModel::where([
             ['type', '=', 'MAIN_MENU'],
             ['menu_key', '=', 'MM_ACCOUNT'],
         ])
-        ->update(['icon' => 'fas fa-money-check-alt']);
+            ->update(['icon' => 'fas fa-money-check-alt']);
 
         MenuModel::where([
             ['type', '=', 'MAIN_MENU'],
             ['menu_key', '=', 'MM_USER'],
         ])
-        ->update(['icon' => 'fas fa-user-astronaut']);
+            ->update(['icon' => 'fas fa-user-astronaut']);
 
         MenuModel::where([
             ['type', '=', 'MAIN_MENU'],
             ['menu_key', '=', 'MM_SUPPLIER'],
         ])
-        ->update(['icon' => 'fas fa-truck']);
+            ->update(['icon' => 'fas fa-truck']);
 
         MenuModel::where([
             ['type', '=', 'MAIN_MENU'],
             ['menu_key', '=', 'MM_TAX_AND_DISCOUNT'],
         ])
-        ->update(['icon' => 'fas fa-percentage']);
+            ->update(['icon' => 'fas fa-percentage']);
 
         MenuModel::where([
             ['type', '=', 'MAIN_MENU'],
             ['menu_key', '=', 'MM_PRODUCT'],
         ])
-        ->update(['icon' => 'fas fa-cubes']);
+            ->update(['icon' => 'fas fa-cubes']);
 
         MenuModel::where([
             ['type', '=', 'MAIN_MENU'],
             ['menu_key', '=', 'MM_REPORT'],
         ])
-        ->update(['icon' => 'fas fa-chart-pie']);
+            ->update(['icon' => 'fas fa-chart-pie']);
 
         MenuModel::where([
             ['type', '=', 'MAIN_MENU'],
             ['menu_key', '=', 'MM_RESTAURANT'],
         ])
-        ->update(['icon' => 'fas fa-utensils']);
+            ->update(['icon' => 'fas fa-utensils']);
 
         MenuModel::where([
             ['type', '=', 'MAIN_MENU'],
             ['menu_key', '=', 'MM_SETTINGS'],
         ])
-        ->update(['icon' => 'fas fa-cog']);
+            ->update(['icon' => 'fas fa-cog']);
 
         SettingAppModel::where([
-            ['company_name', '=', 'Appsthing POS']
+            ['company_name', '=', 'Syntiaro POS']
         ])
-        ->update(['company_name' => 'Appsthing']);
+            ->update(['company_name' => 'Syntiaro']);
 
         MasterTaxOptionModel::firstOrCreate(
             [

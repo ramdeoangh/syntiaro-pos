@@ -18,17 +18,17 @@ class v4_9_overall_seeder extends Seeder
     public function run()
     {
         $base_controller = new Controller;
-        
+
         UserModel::updateOrCreate(
-            ['email' => 'customer@appsthing.com'],
+            ['email' => 'customer@syntiaro.com'],
             [
                 'slack' => $base_controller->generate_slack("users"),
                 'user_code' => 'CUSTOMER_USER',
                 'fullname' => "Customer",
-                'email' => 'customer@appsthing.com',
+                'email' => 'customer@syntiaro.com',
                 'password' => '',
                 'phone' => '0000000000',
-                'role_id' => 1, 
+                'role_id' => 1,
                 'status' => 1
             ]
         )->save();
@@ -48,13 +48,13 @@ class v4_9_overall_seeder extends Seeder
             ['type', '=', 'MAIN_MENU'],
             ['menu_key', '=', 'MM_ORDERS'],
         ])
-        ->active()
-        ->first();
+            ->active()
+            ->first();
 
         $digital_menu_orders_sm = MenuModel::create(
             [
                 'type' => 'SUB_MENU',
-                'menu_key' => 'SM_DIGITAL_MENU_ORDERS', 
+                'menu_key' => 'SM_DIGITAL_MENU_ORDERS',
                 'label' => "Digital Menu Orders",
                 'route' => "digital_menu_orders",
                 'parent' => $orders_mm->id,
@@ -67,30 +67,30 @@ class v4_9_overall_seeder extends Seeder
             ['type', '=', 'SUB_MENU'],
             ['menu_key', '=', 'SM_PURCHASE_ORDERS'],
         ])
-        ->update(['sort_order' => 1]);
+            ->update(['sort_order' => 1]);
 
         MenuModel::where([
             ['type', '=', 'SUB_MENU'],
             ['menu_key', '=', 'SM_INVOICES'],
         ])
-        ->update(['sort_order' => 2]);
+            ->update(['sort_order' => 2]);
 
         MenuModel::where([
             ['type', '=', 'SUB_MENU'],
             ['menu_key', '=', 'SM_POS_ORDERS'],
         ])
-        ->update(['sort_order' => 3]);
-        
+            ->update(['sort_order' => 3]);
+
         MenuModel::where([
             ['type', '=', 'SUB_MENU'],
             ['menu_key', '=', 'SM_QUOTATIONS'],
         ])
-        ->update(['sort_order' => 5]);
+            ->update(['sort_order' => 5]);
 
         MenuModel::create(
             [
                 'type' => 'ACTIONS',
-                'menu_key' => 'A_VIEW_DIGITAL_MENU_ORDER_LISTING', 
+                'menu_key' => 'A_VIEW_DIGITAL_MENU_ORDER_LISTING',
                 'label' => "View Digital Menu Order Listing",
                 'route' => "",
                 'parent' => $digital_menu_orders_sm,
@@ -101,7 +101,7 @@ class v4_9_overall_seeder extends Seeder
         MenuModel::create(
             [
                 'type' => 'ACTIONS',
-                'menu_key' => 'EDIT_DIGITAL_MENU_ORDER', 
+                'menu_key' => 'EDIT_DIGITAL_MENU_ORDER',
                 'label' => "Edit Digital Menu Order",
                 'route' => "",
                 'parent' => $digital_menu_orders_sm,

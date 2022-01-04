@@ -21,19 +21,19 @@ class v4_8_overall_seeder extends Seeder
         SettingAppModel::where([
             ['app_title', '=', NULL],
         ])
-        ->update(['app_title' => 'Appsthing POS']);
+            ->update(['app_title' => 'Syntiaro POS']);
 
         $restaurant_mm = MenuModel::select('id')->where([
             ['type', '=', 'MAIN_MENU'],
             ['menu_key', '=', 'MM_RESTAURANT'],
         ])
-        ->active()
-        ->first();
+            ->active()
+            ->first();
 
         $restaurant_menu_sm = MenuModel::create(
             [
                 'type' => 'SUB_MENU',
-                'menu_key' => 'SM_RESTAURANT_MENU', 
+                'menu_key' => 'SM_RESTAURANT_MENU',
                 'label' => "Restaurant Menu",
                 'route' => "restaurant_menu",
                 'parent' => $restaurant_mm->id,
@@ -46,18 +46,18 @@ class v4_8_overall_seeder extends Seeder
             ['type', '=', 'SUB_MENU'],
             ['menu_key', '=', 'SM_SMS_SETTING'],
         ])
-        ->active()
-        ->first();
+            ->active()
+            ->first();
 
         MenuModel::where([
             ['id', '=', $sms_setting_sm->id],
         ])
-        ->update(['route' => 'sms_settings']);
+            ->update(['route' => 'sms_settings']);
 
         MenuModel::create(
             [
                 'type' => 'ACTIONS',
-                'menu_key' => 'A_DETAIL_SMS_SETTING', 
+                'menu_key' => 'A_DETAIL_SMS_SETTING',
                 'label' => "View SMS Setting Detail",
                 'route' => "",
                 'parent' => $sms_setting_sm->id,
@@ -68,7 +68,7 @@ class v4_8_overall_seeder extends Seeder
         MenuModel::create(
             [
                 'type' => 'ACTIONS',
-                'menu_key' => 'A_VIEW_SMS_SETTING_LISTING', 
+                'menu_key' => 'A_VIEW_SMS_SETTING_LISTING',
                 'label' => "View SMS Setting Listing",
                 'route' => "",
                 'parent' => $sms_setting_sm->id,
@@ -80,19 +80,19 @@ class v4_8_overall_seeder extends Seeder
             ['menu_key', '=', 'A_EDIT_SMS_SETTING'],
             ['type', '=', 'ACTIONS'],
         ])
-        ->update(['sort_order' => 2]);
-        
-        $sms_setting_data = SettingSmsModel::select('*')
-        ->active()
-        ->first();
+            ->update(['sort_order' => 2]);
 
-        if(!empty($sms_setting_data)){
+        $sms_setting_data = SettingSmsModel::select('*')
+            ->active()
+            ->first();
+
+        if (!empty($sms_setting_data)) {
             SettingSmsModel::where([
                 ['id', '=', $sms_setting_data->id]
             ])
-            ->update(['gateway_type' => 'TWILIO']);
-        }else{
-            
+                ->update(['gateway_type' => 'TWILIO']);
+        } else {
+
             SettingSmsModel::create(
                 [
                     "slack" => $base_controller->generate_slack("setting_sms_gateways"),
