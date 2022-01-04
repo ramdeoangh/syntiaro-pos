@@ -1,2 +1,2 @@
 # syntiaro-pos
-POS sales
+POS sales demo
