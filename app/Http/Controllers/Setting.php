@@ -147,7 +147,7 @@ class Setting extends Controller
     public function cpanel_storage_link()
     {
 
-        //if(App::environment('production')){
+        if(App::environment('production')){
         try {
 
             Artisan::call('storage:link');
@@ -156,9 +156,9 @@ class Setting extends Controller
         } catch (Exception $e) {
             Response::make($e->getMessage(), 500);
         }
-        // }else{
-        //     App::abort(404);
-        // } 
+        }else{
+            App::abort(404);
+        } 
     }
 
     public function cpanel_intial_config()
