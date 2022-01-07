@@ -93,34 +93,23 @@ CREATE TABLE `app_activation` (
     `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
 
-INSERT INTO
-    `app_activation` (
-        `activation_code`,
-        `created_at`,
-        `updated_at`
-    )
-VALUES
-    (
-        'aHR0cHM6Ly9zeW50aWFyby5jb20v',
-        '2022-01-04 08:57:27',
-        '2022-01-04 08:57:27'
-    ) -- --------------------------------------------------------
-    --
-    -- Table structure for table `billing_counters`
-    --
-    CREATE TABLE `billing_counters` (
-        `id` int(10) UNSIGNED NOT NULL,
-        `slack` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-        `store_id` int(11) NOT NULL,
-        `billing_counter_code` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-        `counter_name` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
-        `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-        `status` tinyint(4) NOT NULL DEFAULT 1,
-        `created_by` int(11) DEFAULT NULL,
-        `updated_by` int(11) DEFAULT NULL,
-        `created_at` timestamp NULL DEFAULT NULL,
-        `updated_at` timestamp NULL DEFAULT NULL
-    ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+-- --------------------------------------------------------
+--
+-- Table structure for table `billing_counters`
+--
+CREATE TABLE `billing_counters` (
+    `id` int(10) UNSIGNED NOT NULL,
+    `slack` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+    `store_id` int(11) NOT NULL,
+    `billing_counter_code` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+    `counter_name` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
+    `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+    `status` tinyint(4) NOT NULL DEFAULT 1,
+    `created_by` int(11) DEFAULT NULL,
+    `updated_by` int(11) DEFAULT NULL,
+    `created_at` timestamp NULL DEFAULT NULL,
+    `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 --
