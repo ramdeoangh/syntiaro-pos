@@ -236,7 +236,9 @@ class User extends Controller
                 throw new Exception("Invalid role selected", 400);
             }
 
-            $password = Str::random(6);
+            
+            // $password = Str::random(6);
+            $password = $request->password;
             $hashed_password = Hash::make($password);
 
             DB::beginTransaction();
@@ -245,6 +247,7 @@ class User extends Controller
                 "slack" => $this->generate_slack("users"),
                 "user_code" => Str::random(6),
                 "email" => $request->email,
+                // "password" => $request->password,
                 "password" => $hashed_password,
                 "init_password" => $password,
                 "fullname" => $request->fullname,
@@ -397,8 +400,13 @@ class User extends Controller
 
             DB::beginTransaction();
 
+            $password = $request->password;
+            $hashed_password = Hash::make($password);
+
             $user = [        
                 "email" => $request->email,
+                "password" => $hashed_password,
+                "init_password" => $password,
                 "fullname" => $request->fullname,
                 "phone" => $request->phone,
                 "role_id" => $role_data->id,

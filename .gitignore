@@ -13,3 +13,4 @@ yarn-error.log
 .env
 public/timezone_config.txt
 composer.lock
+package-lock.json
