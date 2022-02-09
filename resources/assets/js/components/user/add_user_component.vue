@@ -24,6 +24,16 @@
                         <label for="email">{{ $t("Email") }}</label>
                         <input type="text" name="email" v-model="email" v-validate="'required|email|max:150'" class="form-control form-control-custom" :placeholder="$t('Please enter email')"  autocomplete="off">
                         <span v-bind:class="{ 'error' : errors.has('email') }">{{ errors.first('email') }}</span> 
+                    </div>                    
+                    <div class="form-group col-md-3" v-show="user_slack == ''">
+                        <label for="password">{{ $t("Password") }}</label>
+                        <div class="input-group" id="show_hide_password">
+                            <input type="password" name="password" v-model="password" v-validate="'required|min:6|max:16'" class="form-control form-control-custom" :placeholder="$t('Please enter password')"  autocomplete="off">
+                            <div class="input-group-addon" style="margin-left: -15px;margin-top: 5px;position: relative;right: 5%;z-index: 1;">
+                                <a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        <span v-bind:class="{ 'error' : errors.has('password') }">{{ errors.first('password') }}</span> 
                     </div>
                     <div class="form-group col-md-3">
                         <label for="firstname">{{ $t("Fullname") }}</label>
@@ -131,6 +141,22 @@
 </template>
 
 <script>
+
+    $(document).ready(function() {
+        $("#show_hide_password a").on('click', function(event) {
+            event.preventDefault();
+            if($('#show_hide_password input').attr("type") == "text"){
+                $('#show_hide_password input').attr('type', 'password');
+                $('#show_hide_password i').addClass( "fa-eye-slash" );
+                $('#show_hide_password i').removeClass( "fa-eye" );
+            }else if($('#show_hide_password input').attr("type") == "password"){
+                $('#show_hide_password input').attr('type', 'text');
+                $('#show_hide_password i').removeClass( "fa-eye-slash" );
+                $('#show_hide_password i').addClass( "fa-eye" );
+            }
+        });
+    });
+
     'use strict';
     
     export default {
@@ -154,6 +180,7 @@
 
                 user_slack      : (this.user_data == null)?'':this.user_data.slack,
                 email           : (this.user_data == null)?'':this.user_data.email,
+                password        : (this.user_data == null)?'':this.user_data.password,
                 fullname        : (this.user_data == null)?'':this.user_data.fullname,
                 phone           : (this.user_data == null)?'':this.user_data.phone,
                 role            : (this.user_data == null)?'':(this.user_data.role == null)?'':this.user_data.role.slack,
@@ -191,6 +218,7 @@
                             formData.append("access_token", window.settings.access_token);
                             formData.append("fullname", (this.fullname == null)?'':this.fullname);
                             formData.append("email", (this.email == null)?'':this.email);
+                            formData.append("password", (this.password == null)?'':this.password);
                             formData.append("phone", (this.phone == null)?'':this.phone);
                             formData.append("role", (this.role == null)?'':this.role);
                             formData.append("status", (this.status == null)?'':this.status);
