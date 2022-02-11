@@ -22,6 +22,7 @@ use App\Models\MasterAccountType as MasterAccountTypeModel;
 use App\Models\MasterBillingType as MasterBillingTypeModel;
 use App\Models\Role as RoleModel;
 use App\Models\Language as LanguageModel;
+use Illuminate\Support\Carbon;
 
 use App\Http\Resources\Collections\StoreCollection;
 
@@ -137,7 +138,11 @@ class Store extends Controller
                 throw new Exception("Invalid request", 400);
             }
 
+            $request->store_code = Carbon::now()->format('YmdHis');
+
             $this->validate_request($request);
+
+
 
             $store_data_exists = StoreModel::select('id')
             ->where('store_code', '=', trim($request->store_code))
@@ -215,7 +220,7 @@ class Store extends Controller
                 "status" => $request->status,
                 "created_by" => $request->logged_user_id
             ];
-            
+
             $store_id = StoreModel::create($store)->id;
 
             $this->create_default_business_account($request, $store_id);
@@ -323,7 +328,7 @@ class Store extends Controller
 
             if(!check_access(['A_EDIT_STORE'], true)){
                 throw new Exception("Invalid request", 400);
-            }
+            }            
 
             $this->validate_request($request);
 
@@ -516,7 +521,7 @@ class Store extends Controller
             'name' => $this->get_validation_rules("name_label", true),
             'address' => $this->get_validation_rules("text", true),
             'pincode' => $this->get_validation_rules("pincode", false),
-            'store_code' => $this->get_validation_rules("codes", true),
+            // 'store_code' => $this->get_validation_rules("codes", true),
             'tax_number' => $this->get_validation_rules("name_label", false),
             'primary_contact' => $this->get_validation_rules("phone", false),
             'secondary_contact' => $this->get_validation_rules("phone", false),

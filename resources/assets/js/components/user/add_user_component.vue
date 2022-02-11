@@ -28,7 +28,7 @@
                     <div class="form-group col-md-3" v-show="user_slack == ''">
                         <label for="password">{{ $t("Password") }}</label>
                         <div class="input-group" id="show_hide_password">
-                            <input type="password" name="password" v-model="password" v-validate="'required|min:6|max:16'" class="form-control form-control-custom" :placeholder="$t('Please enter password')"  autocomplete="off">
+                            <input type="password" name="password" v-model="password" v-validate="'min:6|max:16'" class="form-control form-control-custom" :placeholder="$t('Please enter password')"  autocomplete="off">
                             <div class="input-group-addon" style="margin-left: -15px;margin-top: 5px;position: relative;right: 5%;z-index: 1;">
                                 <a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
                             </div>
