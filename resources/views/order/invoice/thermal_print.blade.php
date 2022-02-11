@@ -190,10 +190,15 @@
                 </td>
             </tr>
         </table>
-        @endif
+        @endif        
 
-        <div class='center'>
-            <div class='display-block'>Thank You!</div>
+        <div class='left'>
+            <div class='display-block'>Syntiaro Solution Pvt Ltd</div>
+            <div class='display-block'>+91 9112114422</div>            
+        </div>
+
+        <div class='center mt-4'>
+            <div class='display-block'>Thanks...Visit...Again</div>       
         </div>
 
     </body>

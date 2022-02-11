@@ -223,6 +223,10 @@ class User extends Controller
                 throw new Exception("Invalid request", 400);
             }
 
+            $validated = $request->validate([
+                'password' => 'required'
+            ]);
+
             $this->validate_request($request);
             
             //check user email already exists
@@ -400,13 +404,13 @@ class User extends Controller
 
             DB::beginTransaction();
 
-            $password = $request->password;
-            $hashed_password = Hash::make($password);
+            // $password = $request->password;
+            // $hashed_password = Hash::make($password);
 
             $user = [        
                 "email" => $request->email,
-                "password" => $hashed_password,
-                "init_password" => $password,
+                // "password" => $hashed_password,
+                // "init_password" => $password,
                 "fullname" => $request->fullname,
                 "phone" => $request->phone,
                 "role_id" => $role_data->id,

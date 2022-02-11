@@ -22,11 +22,11 @@
                         <input type="text" name="name" v-model="name" v-validate="'required|max:250'" class="form-control form-control-custom" :placeholder="$t('Please enter store name')"  autocomplete="off">
                         <span v-bind:class="{ 'error' : errors.has('name') }">{{ errors.first('name') }}</span> 
                     </div>
-                    <div class="form-group col-md-3">
+                    <!-- <div class="form-group col-md-3">
                         <label for="store_code">{{ $t("Store Code") }}</label>
-                        <input type="text" name="store_code" v-model="store_code" v-validate="'required|alpha_dash|max:30'" class="form-control form-control-custom" :placeholder="$t('Please enter store code')"  autocomplete="off">
+                        <input type="text" name="store_code" v-model="store_code" v-validate="'alpha_dash|max:30'" class="form-control form-control-custom" :placeholder="$t('Please enter store code')"  autocomplete="off">
                         <span v-bind:class="{ 'error' : errors.has('store_code') }">{{ errors.first('store_code') }}</span> 
-                    </div>
+                    </div> -->
                     <div class="form-group col-md-3">
                         <label for="tax_number">{{ $t("Tax Number or GST number") }}</label>
                         <input type="text" name="tax_number" v-model="tax_number" v-validate="'max:50'" class="form-control form-control-custom" :placeholder="$t('Please enter tax number or GST number')"  autocomplete="off">
