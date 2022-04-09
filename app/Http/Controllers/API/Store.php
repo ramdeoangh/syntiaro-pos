@@ -138,9 +138,16 @@ class Store extends Controller
                 throw new Exception("Invalid request", 400);
             }
 
-            $request->store_code = Carbon::now()->format('YmdHis');
+
+            // 5 digit generate store_code id in sequence number start code
+            $store_id_get = StoreModel::orderBy('created_at', 'desc')->first();
+
+            $five_digit_store_id = is_null($store_id_get)? str_pad('1', 5, '0', STR_PAD_LEFT) : str_pad($store_id_get->id + 1, 5, '0', STR_PAD_LEFT);
+            
+            $request->store_code = Carbon::now()->format('ym').$five_digit_store_id;            
 
             $this->validate_request($request);
+            // 5 digit generate store_code id in sequence number end code
 
 
 

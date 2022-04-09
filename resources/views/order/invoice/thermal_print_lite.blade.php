@@ -90,8 +90,13 @@
         </table>
         @endif
 
-        <div class='center'>
-            <div class='display-block'>Thank You!</div>
+        <div class='center mb-4'>
+            <div class='display-block'>www.syntiaro.com</div>
+            <br>         
+        </div>
+
+        <div class='center mt-4'>
+            <div class='display-block'>Thanks...Visit...Again!</div>       
         </div>
 
     </body>

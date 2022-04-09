@@ -192,13 +192,13 @@
         </table>
         @endif        
 
-        <div class='left'>
-            <div class='display-block'>Syntiaro Solution Pvt Ltd</div>
-            <div class='display-block'>+91 9112114422</div>            
+        <div class='center mb-4'>
+            <div class='display-block'>www.syntiaro.com</div>
+            <br>         
         </div>
 
         <div class='center mt-4'>
-            <div class='display-block'>Thanks...Visit...Again</div>       
+            <div class='display-block'>Thanks...Visit...Again!</div>       
         </div>
 
     </body>
