@@ -1,102 +1,144 @@
 <template>
     <div class="row">
         <div class="col-md-12">
-            
             <form @submit.prevent="submit_form" class="mb-3">
-
-                <div class="d-flex flex-wrap mb-4">
-                    <div class="mr-auto">
-                        <span class="text-title" v-if="user_slack == ''">{{ $t("Add User") }}</span>
-                        <span class="text-title" v-else>{{ $t("Edit User") }}</span>
-                    </div>
-                    <div class="">
-                        <button type="submit" class="btn btn-primary" v-bind:disabled="processing == true"> <i class='fa fa-circle-notch fa-spin'  v-if="processing == true"></i> {{ $t("Save") }}</button>
-                    </div>
-                </div>
-                    
-                <p v-html="server_errors" v-bind:class="[error_class]"></p>
-
-                <div class="mb-2">
-                    <span class="text-subhead">{{ $t("Basic Information") }}</span>
-                </div>
-                <div class="form-row mb-2">
-                    <div class="form-group col-md-3">
-                        <label for="email">{{ $t("Email") }}</label>
-                        <input type="text" name="email" v-model="email" v-validate="'required|email|max:150'" class="form-control form-control-custom" :placeholder="$t('Please enter email')"  autocomplete="off">
-                        <span v-bind:class="{ 'error' : errors.has('email') }">{{ errors.first('email') }}</span> 
-                    </div>                    
-                    <div class="form-group col-md-3" v-show="user_slack == ''">
-                        <label for="password">{{ $t("Password") }}</label>
-                        <div class="input-group" id="show_hide_password">
-                            <input type="password" name="password" v-model="password" v-validate="'min:6|max:16'" class="form-control form-control-custom" :placeholder="$t('Please enter password')"  autocomplete="off">
-                            <div class="input-group-addon" style="margin-left: -15px;margin-top: 5px;position: relative;right: 5%;z-index: 1;">
-                                <a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+                <div class="card mb-4 bg-white shadow">
+                    <div class="card-header">
+                        <div class="d-flex flex-wrap my-2">
+                            <div class="mr-auto">
+                                <span class="text-title" v-if="user_slack == ''">{{ $t("Add User") }}</span>
+                                <span class="text-title" v-else>{{ $t("Edit User") }}</span>
+                            </div>
+                            <div class="">
+                                <button type="submit" class="btn btn-success" v-bind:disabled="processing == true"> <i class='fa fa-circle-notch fa-spin'  v-if="processing == true"></i> {{ $t("Save") }}</button>
                             </div>
                         </div>
-                        <span v-bind:class="{ 'error' : errors.has('password') }">{{ errors.first('password') }}</span> 
                     </div>
-                    <div class="form-group col-md-3">
-                        <label for="firstname">{{ $t("Fullname") }}</label>
-                        <input type="text" name="fullname" v-model="fullname" v-validate="'required|max:250'" class="form-control form-control-custom" :placeholder="$t('Please enter fullname')"  autocomplete="off">
-                        <span v-bind:class="{ 'error' : errors.has('fullname') }">{{ errors.first('fullname') }}</span> 
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="phone">{{ $t("Contact No.") }}</label>
-                        <input type="text" name="phone" v-model="phone" v-validate="'required|min:10|max:15'" class="form-control form-control-custom" :placeholder="$t('Please enter Contact Number')" autocomplete="off">
-                        <span v-bind:class="{ 'error' : errors.has('phone') }">{{ errors.first('phone') }}</span> 
-                    </div>
-                </div>
+                    <div class="card-body"> 
+                        <div class="row">  
+                            <div class="col-4 border-right">                 
+                                        
+                                <p v-html="server_errors" v-bind:class="[error_class]"></p>
 
+                                <div class="mb-2">
+                                    <span class="text-subhead">{{ $t("Basic Information") }}</span>
+                                </div>
+                                <div class="mb-4">
+                                    <div class="form-group">
+                                        <label for="email">{{ $t("Email") }}</label>
+                                        <input type="text" name="email" v-model="email" v-validate="'required|email|max:150'" class="form-control form-control-custom" :placeholder="$t('Please enter email')"  autocomplete="off">
+                                        <span v-bind:class="{ 'error' : errors.has('email') }">{{ errors.first('email') }}</span> 
+                                    </div>                    
+                                    <div class="form-group" v-show="user_slack == ''">
+                                        <label for="password">{{ $t("Password") }}</label>
+                                        <div class="input-group" id="show_hide_password">
+                                            <input type="password" name="password" v-model="password" v-validate="'min:6|max:16'" class="form-control form-control-custom" :placeholder="$t('Please enter password')"  autocomplete="off">
+                                            <div class="input-group-addon" style="margin-left: -15px;margin-top: 5px;position: relative;right: 5%;z-index: 1;">
+                                                <a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+                                            </div>
+                                        </div>
+                                        <span v-bind:class="{ 'error' : errors.has('password') }">{{ errors.first('password') }}</span> 
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="firstname">{{ $t("Fullname") }}</label>
+                                        <input type="text" name="fullname" v-model="fullname" v-validate="'required|max:250'" class="form-control form-control-custom" :placeholder="$t('Please enter fullname')"  autocomplete="off">
+                                        <span v-bind:class="{ 'error' : errors.has('fullname') }">{{ errors.first('fullname') }}</span> 
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone">{{ $t("Contact No.") }}</label>
+                                        <input type="text" name="phone" v-model="phone" v-validate="'required|min:10|max:15'" class="form-control form-control-custom" :placeholder="$t('Please enter Contact Number')" autocomplete="off">
+                                        <span v-bind:class="{ 'error' : errors.has('phone') }">{{ errors.first('phone') }}</span> 
+                                    </div>
+                                </div>
 
-                <div class="mb-2">
-                    <span class="text-subhead">{{ $t("Role Information") }}</span>
-                </div>
-                <div class="form-row mb-2">
-                    <div class="form-group col-md-3">
-                        <label for="lastname">{{ $t("Role") }}</label>
-                        <select name="role" v-model="role" v-validate="'required'" class="form-control form-control-custom custom-select">
-                            <option value="">Choose Role..</option>
-                            <option v-for="(role, index) in roles" v-bind:value="role.slack" v-bind:key="index">
-                                {{ role.label }}
-                            </option>
-                        </select>
-                        <span v-bind:class="{ 'error' : errors.has('role') }">{{ errors.first('role') }}</span> 
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="status">{{ $t("Status") }}</label>
-                        <select name="status" v-model="status" v-validate="'required|numeric'" class="form-control form-control-custom custom-select">
-                            <option value="">Choose Status..</option>
-                            <option v-for="(status, index) in statuses" v-bind:value="status.value" v-bind:key="index">
-                                {{ status.label }}
-                            </option>
-                        </select>
-                        <span v-bind:class="{ 'error' : errors.has('status') }">{{ errors.first('status') }}</span> 
-                    </div>
-                </div>
+                                <hr class="mx-0">
+                                <div class="mb-2">
+                                    <span class="text-subhead">{{ $t("Role Information") }}</span>
+                                </div>
+                                <div class="mb-4">
+                                    <div class="form-group">
+                                        <label for="lastname">{{ $t("Role") }}</label>
+                                        <select name="role" v-model="role" v-validate="'required'" class="form-control form-control-custom custom-select">
+                                            <option value="">Choose Role..</option>
+                                            <option v-for="(role, index) in roles" v-bind:value="role.slack" v-bind:key="index">
+                                                {{ role.label }}
+                                            </option>
+                                        </select>
+                                        <span v-bind:class="{ 'error' : errors.has('role') }">{{ errors.first('role') }}</span> 
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="status">{{ $t("Status") }}</label>
+                                        <select name="status" v-model="status" v-validate="'required|numeric'" class="form-control form-control-custom custom-select">
+                                            <option value="">Choose Status..</option>
+                                            <option v-for="(status, index) in statuses" v-bind:value="status.value" v-bind:key="index">
+                                                {{ status.label }}
+                                            </option>
+                                        </select>
+                                        <span v-bind:class="{ 'error' : errors.has('status') }">{{ errors.first('status') }}</span> 
+                                    </div>
+                                </div>
 
-                <div class="mb-2" v-show="is_super_admin == true && user_slack != ''">
-                    <div class="mb-2">
-                        <span class="text-subhead">{{ $t("Password Reset") }}</span>
-                    </div>
-                    <div class="mb-2">
-                        <button type="button" class="btn btn-outline-primary" v-bind:disabled="reset_password_form.processing == true" v-on:click="reset_password"> <i class='fa fa-circle-notch fa-spin'  v-if="reset_password_form.processing == true"></i> Reset Current Password</button>
-                    </div>
-                </div>
+                                <hr class="mx-0" v-show="is_super_admin == true && user_slack != ''">
+                                <div class="mb-4" v-show="is_super_admin == true && user_slack != ''">
+                                    <div class="mb-2">
+                                        <span class="text-subhead">{{ $t("Password Reset") }}</span>
+                                    </div>
+                                    <div class="mb-2">
+                                        <button type="button" class="btn btn-outline-primary" v-bind:disabled="reset_password_form.processing == true" v-on:click="reset_password"> <i class='fa fa-circle-notch fa-spin'  v-if="reset_password_form.processing == true"></i> Reset Current Password</button>
+                                    </div>
+                                </div>
 
-                <div class="mb-2">
-                    <span class="text-subhead">{{ $t("Store Access") }}</span>
-                </div>
-                <div class="mb-2">
-                    <div class="custom-control custom-checkbox mb-1" v-for="(store, index) in stores" v-bind:key="index">
-                        <input class="custom-control-input" type="checkbox" v-model="stores_selected" v-bind:value="store.slack" v-bind:id="store.slack">
-                        <label class="custom-control-label" v-bind:for="store.slack">
-                            <span class="text-bold">{{ store.store_code }}</span>, {{ store.name }}, {{ store.address }}
-                        </label>
-                    </div>
-                </div>
+                            </div>
+                            <div class="col-8">
+                                <p></p>
+                                <div class="mb-3">
+                                    <span class="text-subhead">{{ $t("Store Access") }}</span>
+                                </div>
+                                <!-- <div class="mb-4">
+                                    <div class="custom-control custom-checkbox mb-1" v-for="(store, index) in stores" v-bind:key="index">
+                                        <input class="custom-control-input" type="checkbox" v-model="stores_selected" v-bind:value="store.slack" v-bind:id="store.slack">
+                                        <label class="custom-control-label" v-bind:for="store.slack">
+                                            <span class="text-bold">{{ store.store_code }}</span>, {{ store.name }}, {{ store.address }}
+                                        </label>
+                                    </div>
+                                </div> -->
 
-            </form>
-                
+                                <table class="table table-bordered table-hover">
+                                    <thead class="bg-light">
+                                        <tr>
+                                            <th scope="col" style="font-size: 14px;">Select Store</th>
+                                            <th scope="col" style="font-size: 14px;">Store Code</th>
+                                            <th scope="col" style="font-size: 14px;">Store Name</th>
+                                            <th scope="col" style="font-size: 14px;">Store Address</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody v-for="(store, index) in stores" v-bind:key="index">
+                                        <tr>
+                                            <td align="center">
+                                                <label class="form-checkbox">
+                                                    <input style="zoom: 1.5;" type="checkbox" :value="store.slack" v-model="stores_selected" v-bind:id="index">
+                                                    <i class="form-icon"></i>
+                                                </label>
+                                            </td>
+                                            <td>{{store.store_code}}</td>
+                                            <td>{{store.name}}</td>
+                                            <td>{{store.address}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                    
+                        </div>                    
+                    </div>
+                    <div class="card-footer">
+                        <div class="my-2">
+                            <button type="submit" class="btn btn-success" v-bind:disabled="processing == true"> <i class='fa fa-circle-notch fa-spin'  v-if="processing == true"></i> {{ $t("Save") }}</button>
+                        </div>
+                    </div>                    
+                </div>
+                  
+            </form>              
         </div>
 
         <modalcomponent v-if="show_modal" v-on:close="show_modal = false">
@@ -222,7 +264,8 @@
                             formData.append("phone", (this.phone == null)?'':this.phone);
                             formData.append("role", (this.role == null)?'':this.role);
                             formData.append("status", (this.status == null)?'':this.status);
-                            formData.append("user_stores", this.stores_selected);
+                            // formData.append("user_stores", this.stores_selected);
+                            formData.append("user_stores", (this.stores_selected == null)?[]:this.stores_selected);
 
                             axios.post(this.api_link, formData).then((response) => {
                         
@@ -255,6 +298,31 @@
                         });
                     }
                     
+                });
+            },
+
+            remove_logo(type){
+                var formData = new FormData();
+
+                formData.append("access_token", window.settings.access_token);
+                formData.append("type", type);
+
+                axios.post('/api/remove_company_logo', formData).then((response) => {
+                    this.processing = false;
+                    if(response.data.status_code == 200) {
+                        location.reload();
+                    }else{
+                        try{
+                            var error_json = JSON.parse(response.data.msg);
+                            this.server_errors = this.loop_api_errors(error_json);
+                        }catch(err){
+                            this.server_errors = response.data.msg;
+                        }
+                        this.error_class = 'error';
+                    }
+                })
+                .catch((error) => {
+                    console.log(error);
                 });
             },
 
